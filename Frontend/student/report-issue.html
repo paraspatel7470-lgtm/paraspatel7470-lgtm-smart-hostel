@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report Issue | Smart Hostel</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/forms.css">
+</head>
+<body>
+
+    <div class="dashboard-wrapper">
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <h2>Smart<span>Hostel</span></h2>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="dashboard.html"><i class="fas fa-th-large"></i> Dashboard</a>
+                <a href="report-issue.html" class="active"><i class="fas fa-plus-circle"></i> Report Issue</a>
+                <a href="my-issues.html"><i class="fas fa-list-ul"></i> My Issues</a>
+                <a href="announcements.html"><i class="fas fa-bullhorn"></i> Announcements</a>
+                <a href="lost-found.html"><i class="fas fa-search"></i> Lost & Found</a>
+            </nav>
+            <div class="sidebar-footer">
+                <button id="logoutBtn" class="logout-link"><i class="fas fa-sign-out-alt"></i> Logout</button>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <div class="form-header">
+                <a href="dashboard.html" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Dashboard</a>
+                <h1>Report New Issue</h1>
+                <p>Provide details about the problem and we'll fix it as soon as possible.</p>
+            </div>
+
+            <div class="form-card">
+                <form id="issueForm">
+                    <div class="readonly-grid">
+                        <div class="input-group">
+                            <label>Hostel</label>
+                            <input type="text" id="hostelName" readonly>
+                        </div>
+                        <div class="input-group">
+                            <label>Block / Room</label>
+                            <input type="text" id="roomInfo" readonly>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="title">Issue Title</label>
+                        <input type="text" id="title" placeholder="Short summary of the problem" required>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label for="category">Category</label>
+                            <select id="category" required>
+                                <option value="" disabled selected>Select Category</option>
+                                <option value="Plumbing">Plumbing</option>
+                                <option value="Electrical">Electrical</option>
+                                <option value="Cleanliness">Cleanliness</option>
+                                <option value="Internet">Internet</option>
+                                <option value="Furniture">Furniture</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="priority">Priority</label>
+                            <select id="priority" required>
+                                <option value="Low">Low</option>
+                                <option value="Medium" selected>Medium</option>
+                                <option value="High">High</option>
+                                <option value="Emergency">Emergency</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="description">Detailed Description</label>
+                        <textarea id="description" rows="5" placeholder="Explain the issue in detail..." required></textarea>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="imageUpload">Upload Image (Optional)</label>
+                        <div class="file-upload-wrapper">
+                            <input type="file" id="imageUpload" accept="image/*">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p>Click to upload or drag and drop</p>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Visibility</label>
+                        <div class="radio-group">
+                            <label class="radio-container">
+                                <input type="radio" name="visibility" value="Public" checked>
+                                <span class="checkmark"></span>
+                                Public (Others can see)
+                            </label>
+                            <label class="radio-container">
+                                <input type="radio" name="visibility" value="Private">
+                                <span class="checkmark"></span>
+                                Private (Only Admin)
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="submit-btn">Submit Issue Report</button>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/student.js"></script>
+</body>
+</html>

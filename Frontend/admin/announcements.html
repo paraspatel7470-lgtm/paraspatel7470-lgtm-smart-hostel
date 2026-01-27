@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Announcements | Admin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <style>
+        .announce-grid {
+            display: grid;
+            grid-template-columns: 380px 1fr;
+            gap: 30px;
+            align-items: start;
+        }
+
+        /* Form Styling */
+        .creation-card {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 20px;
+        }
+
+        .creation-card h2 { margin-bottom: 20px; font-size: 1.2rem; }
+
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 6px; }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%; padding: 12px; border-radius: 10px; border: 1.5px solid #e2e8f0; font-size: 0.9rem; outline: none;
+        }
+        .form-group input:focus { border-color: var(--primary); }
+
+        .publish-btn {
+            width: 100%; padding: 14px; background: var(--primary); color: white; border: none;
+            border-radius: 10px; font-weight: 700; cursor: pointer; transition: 0.2s;
+        }
+        .publish-btn:hover { background: #4338ca; transform: translateY(-2px); }
+
+        /* List Styling */
+        .announcement-item {
+            background: var(--white);
+            padding: 20px;
+            border-radius: 16px;
+            margin-bottom: 15px;
+            border-left: 5px solid #e2e8f0;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .cat-badge {
+            font-size: 0.7rem; padding: 4px 10px; border-radius: 50px; font-weight: 700; text-transform: uppercase;
+        }
+        .cat-Water { background: #dbeafe; color: #1e40af; }
+        .cat-Electricity { background: #fee2e2; color: #b91c1c; }
+        .cat-Cleaning { background: #dcfce7; color: #15803d; }
+        .cat-Maintenance { background: #fef3c7; color: #b45309; }
+        .cat-General { background: #f3e8ff; color: #6b21a8; }
+
+        .item-info h3 { font-size: 1.1rem; margin-bottom: 5px; }
+        .item-info p { font-size: 0.9rem; color: #475569; margin-bottom: 10px; }
+        .item-footer { font-size: 0.75rem; color: #94a3b8; display: flex; gap: 15px; }
+
+        .delete-btn { color: #ef4444; cursor: pointer; background: none; border: none; padding: 5px; }
+
+        @media (max-width: 1024px) {
+            .announce-grid { grid-template-columns: 1fr; }
+            .creation-card { position: static; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="dashboard-wrapper">
+        <aside class="sidebar admin-sidebar">
+            <div class="sidebar-logo"><h2>Hostel<span>Admin</span></h2></div>
+            <nav class="sidebar-nav">
+                <a href="dashboard.html"><i class="fas fa-chart-line"></i> Dashboard</a>
+                <a href="manage-issues.html"><i class="fas fa-tasks"></i> Manage Issues</a>
+                <a href="announcements.html" class="active"><i class="fas fa-bullhorn"></i> Announcements</a>
+                <a href="analytics.html"><i class="fas fa-pie-chart"></i> Analytics</a>
+            </nav>
+            <div class="sidebar-footer">
+                <button id="adminLogoutBtn" class="logout-link"><i class="fas fa-sign-out-alt"></i> Logout</button>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="top-header">
+                <div class="welcome-text">
+                    <a href="dashboard.html" class="back-btn" style="text-decoration:none; color:var(--primary); font-weight:600;">
+                        <i class="fas fa-arrow-left"></i> Dashboard
+                    </a>
+                    <h1 style="margin-top:10px;">Broadcast Center</h1>
+                    <p>Create notices that will instantly appear on the student dashboard.</p>
+                </div>
+            </header>
+
+            <div class="announce-grid">
+                <section class="creation-card">
+                    <h2>New Announcement</h2>
+                    <form id="announceForm">
+                        <div class="form-group">
+                            <label>Notice Title</label>
+                            <input type="text" id="annTitle" placeholder="e.g. Water Shortage" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Category</label>
+                            <select id="annCat" required>
+                                <option value="General">General</option>
+                                <option value="Water">Water</option>
+                                <option value="Electricity">Electricity</option>
+                                <option value="Cleaning">Cleaning</option>
+                                <option value="Maintenance">Maintenance</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Target Area</label>
+                            <input type="text" id="annTarget" placeholder="e.g. All Blocks or Block A" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Description</label>
+                            <textarea id="annDesc" rows="4" placeholder="Detailed message for students..." required></textarea>
+                        </div>
+                        <button type="submit" class="publish-btn">Publish to Students</button>
+                    </form>
+                </section>
+
+                <section>
+                    <div id="adminAnnounceList">
+                        </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/admin.js"></script>
+</body>
+</html>
