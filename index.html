@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login | Smart Hostel Issue Tracker</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/auth.css" />
+  </head>
+  <body>
+    <div class="login-container">
+      <div class="bg-blur-circle circle-1"></div>
+      <div class="bg-blur-circle circle-2"></div>
+
+      <div class="login-card">
+        <div class="login-header">
+          <h1>Smart<span>Hostel</span></h1>
+          <p>Issue Tracking System</p>
+        </div>
+
+        <form id="loginForm" class="login-form">
+          <div class="input-group">
+            <label for="email">Email Address</label>
+            <input
+              type="email"
+              id="email"
+              placeholder="e.g. admin@hostel.com"
+              required
+            />
+          </div>
+
+          <div class="input-group">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              placeholder="••••••••"
+              required
+            />
+          </div>
+
+          <button type="submit" id="loginBtn" class="login-btn">
+            <span>Login to Dashboard</span>
+          </button>
+
+          <p class="helper-text">Forgot your password? Contact the Warden.</p>
+          <p class="signup-link">
+            Don’t have an account?
+            <a href="singup.html" style="text-decoration: none;">Create one</a>
+          </p>
+        </form>
+      </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+  </body>
+</html>
